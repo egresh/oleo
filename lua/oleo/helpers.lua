@@ -188,14 +188,12 @@ function M.format_lualine()
     return { string.format("Term: %s # %d", program_name, term_number) }
 end
 
+function ConfigureTerminal()
+    vim.wo.relativenumber = false
+    vim.wo.number = false
+    vim.cmd("highlight! link TermCursor Cursor")
+    vim.cmd("highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15")
+    vim.cmd('exec "normal i"')
+end
+
 return M
-
--- Pasture?
--- function ConfigureTerminal()
---     vim.wo.relativenumber = false
---     vim.wo.number = false
---     vim.cmd("highlight! link TermCursor Cursor")
---     vim.cmd("highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15")
---     vim.cmd('exec "normal i"')
--- end
-
