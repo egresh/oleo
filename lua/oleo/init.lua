@@ -15,7 +15,7 @@ module.helpers = helpers
 module.sumneko = sumneko
 module.maximizer = maximizer
 
-module.unload = function()
+module.unload_oleo = function()
     local modules = {
         "oleo",
         "oleo/helpers",
