@@ -89,8 +89,15 @@ function M.reload_config()
     end
 end
 
-function M.dumptotmpfile(tbl)
-    local tmpname = "/Users/egresh/tmp/neovim_dump_file.txt"
+function M.dumptotmpfile(tbl, filename)
+    local tmpname = "/Users/egresh/tmp/"
+
+    if filename == nil then
+        tmpname = tmpname .. "neovim_dump_file.txt"
+    else
+        tmpname = tmpname .. filename
+    end
+
     vim.api.nvim_command("silent! redir! > " .. tmpname)
     vim.o.more = false
     M.dump(tbl)
