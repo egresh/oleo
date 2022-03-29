@@ -1,5 +1,18 @@
 local M = {}
 
+-- get the project root for a git project
+function M.project_root()
+    local root = vim.fn.system("git rev-parse --show-toplevel")
+
+    if string.find(root, "fatal:") then
+        root = vim.fn.getcwd()
+    else
+        root = string.gsub(root, "\n", "")
+    end
+
+    return root
+end
+
 -- print over a parameter list
 function M.pp(...)
     local count = select("#", ...)
