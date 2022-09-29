@@ -216,4 +216,21 @@ function ConfigureTerminal()
     vim.cmd('exec "normal i"')
 end
 
+function M.toggle_quickfix()
+    local has_quickfix = false
+
+    for _, window in ipairs(vim.fn.getwininfo()) do
+        if window.quickfix == 1 then
+            has_quickfix = true
+            break
+        end
+    end
+
+    if has_quickfix then
+        vim.api.nvim_command("cclose")
+    else
+        vim.api.nvim_command("copen")
+    end
+end
+
 return M
